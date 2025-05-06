@@ -1,107 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Secure Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
+
     .container {
-      max-width: 400px;
-      margin: 50px auto;
+      background: white;
       padding: 30px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+
     h2 {
       text-align: center;
-      color: #333;
+      color: #2d2d2d;
+      margin-bottom: 20px;
     }
+
     label {
-      font-weight: 500;
-      margin-bottom: 5px;
       display: block;
+      margin-top: 15px;
+      font-weight: bold;
     }
+
     input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      margin-bottom: 20px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 5px;
     }
+
     button {
+      margin-top: 25px;
       width: 100%;
       padding: 12px;
-      background: #0070f3;
+      background: #007bff;
       color: white;
       border: none;
-      border-radius: 6px;
       font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    button:hover {
-      background: #005ac1;
-    }
+
     .logos {
       text-align: center;
-      margin-bottom: 20px;
+      margin-top: 20px;
     }
+
     .logos img {
       height: 30px;
-      margin: 0 8px;
-      vertical-align: middle;
+      margin: 0 10px;
     }
-    #confirmation {
-      display: none;
+
+    .confirm-msg {
       text-align: center;
-      margin-top: 20px;
       color: green;
       font-weight: bold;
+      margin-top: 20px;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Secure Payment</h2>
-    <div class="logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Mastercard-logo.png" alt="MasterCard">
-    </div>
     <form id="paymentForm">
-      <label>Full Name</label>
+      <label for="name">Full Name</label>
       <input type="text" name="name" required>
 
-      <label>Credit Card Number</label>
+      <label for="card">Card Number</label>
       <input type="text" name="card" required>
 
-      <label>Expiry Date (MM/YY)</label>
-      <input type="text" name="expiry" required>
+      <label for="expiry">Expiry Date</label>
+      <input type="text" name="expiry" placeholder="MM/YY" required>
 
-      <label>CVV</label>
-      <input type="password" name="cvv" required>
+      <label for="cvv">CVV</label>
+      <input type="text" name="cvv" required>
 
-      <label>Shipping Address</label>
+      <label for="address">Shipping Address</label>
       <input type="text" name="address" required>
 
-      <label>Phone Number</label>
-      <input type="tel" name="phone" required>
+      <label for="phone">Phone Number</label>
+      <input type="text" name="phone" required>
 
       <button type="submit">Proceed Securely</button>
     </form>
 
-    <div id="confirmation">Payment Confirmed. You may close this page.</div>
+    <div class="confirm-msg" id="confirm">Payment Confirmed</div>
+
+    <div class="logos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Mastercard-logo.png" alt="Mastercard">
+    </div>
   </div>
 
   <script>
-    document.getElementById('paymentForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const form = event.target;
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
       const params = new URLSearchParams();
 
       for (let i = 0; i < form.elements.length; i++) {
@@ -111,8 +122,12 @@
         }
       }
 
-      document.getElementById('confirmation').style.display = 'block';
-      history.replaceState(null, '', 'summary.html?' + params.toString());
+      document.getElementById('confirm').style.display = 'block';
+
+      // Delay redirection so user sees confirmation
+      setTimeout(() => {
+        window.location.href = 'Summery.html?' + params.toString();
+      }, 1500);
     });
   </script>
 </body>
