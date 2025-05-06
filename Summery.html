@@ -1,49 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Payment Summary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f7f9fb;
-      padding: 40px;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
     }
-    .summary {
-      max-width: 500px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    }
+
     h2 {
       text-align: center;
-      margin-bottom: 30px;
       color: #333;
     }
-    .info {
-      margin-bottom: 12px;
+
+    .details {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    .label {
-      font-weight: 600;
-      color: #555;
+
+    .details p {
+      margin: 10px 0;
+      font-size: 16px;
     }
-    .value {
-      margin-left: 10px;
-      color: #222;
+
+    .details strong {
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <div class="summary">
-    <h2>Payment Summary</h2>
-    <div class="info"><span class="label">Name:</span><span class="value" id="name"></span></div>
-    <div class="info"><span class="label">Card Number:</span><span class="value" id="card"></span></div>
-    <div class="info"><span class="label">Expiry:</span><span class="value" id="expiry"></span></div>
-    <div class="info"><span class="label">CVV:</span><span class="value" id="cvv"></span></div>
-    <div class="info"><span class="label">Shipping Address:</span><span class="value" id="address"></span></div>
-    <div class="info"><span class="label">Phone Number:</span><span class="value" id="phone"></span></div>
+  <h2>Payment Summary</h2>
+  <div class="details">
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Card Number:</strong> <span id="card"></span></p>
+    <p><strong>Expiry:</strong> <span id="expiry"></span></p>
+    <p><strong>CVV:</strong> <span id="cvv"></span></p>
+    <p><strong>Address:</strong> <span id="address"></span></p>
+    <p><strong>Phone:</strong> <span id="phone"></span></p>
   </div>
 
   <script>
@@ -56,4 +56,4 @@
     document.getElementById('phone').textContent = params.get('phone');
   </script>
 </body>
-                                                                    </html>
+</html>
