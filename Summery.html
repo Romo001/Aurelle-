@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Summary</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f9fb;
+      padding: 40px;
+    }
+    .summary {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .info {
+      margin-bottom: 12px;
+    }
+    .label {
+      font-weight: 600;
+      color: #555;
+    }
+    .value {
+      margin-left: 10px;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="summary">
+    <h2>Payment Summary</h2>
+    <div class="info"><span class="label">Name:</span><span class="value" id="name"></span></div>
+    <div class="info"><span class="label">Card Number:</span><span class="value" id="card"></span></div>
+    <div class="info"><span class="label">Expiry:</span><span class="value" id="expiry"></span></div>
+    <div class="info"><span class="label">CVV:</span><span class="value" id="cvv"></span></div>
+    <div class="info"><span class="label">Shipping Address:</span><span class="value" id="address"></span></div>
+    <div class="info"><span class="label">Phone Number:</span><span class="value" id="phone"></span></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('name').textContent = params.get('name');
+    document.getElementById('card').textContent = params.get('card');
+    document.getElementById('expiry').textContent = params.get('expiry');
+    document.getElementById('cvv').textContent = params.get('cvv');
+    document.getElementById('address').textContent = params.get('address');
+    document.getElementById('phone').textContent = params.get('phone');
+  </script>
+</body>
+                                                                    </html>
